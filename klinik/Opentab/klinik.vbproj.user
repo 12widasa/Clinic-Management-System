@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="administrator.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="admin_view\adm_beranda.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="admin_view\adm_dokter.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="admin_view\adm_kasir.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="admin_view\dokter\add_dokter.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="admin_view\dokter\list_dokter.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="admin_view\adm_perawat.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="kasir.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="kasir\list_obat.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="kasir\list_transaksi.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="kasir\transaksi.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="perawat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="perawat\pwt_periksa.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

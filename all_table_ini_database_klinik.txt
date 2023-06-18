@@ -1,0 +1,158 @@
+USE [klinik]
+GO
+
+/****** Object:  Table [dbo].[users]    Script Date: 18/06/2023 06:50:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[users](
+	[ID] [nvarchar](10) NULL,
+	[Nama] [varchar](50) NULL,
+	[Username] [varchar](50) NULL,
+	[Password] [nvarchar](50) NULL,
+	[Telepon] [bigint] NULL,
+	[Jenis_Kelamin] [varchar](20) NULL,
+	[Alamat] [varchar](100) NULL,
+	[Spesialisasi] [varchar](50) NULL,
+	[User_Type] [varchar](20) NULL,
+	[Gaji] [bigint] NULL
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+
+INSERT INTO users (ID, Nama, Username, Password, Telepon, Jenis_Kelamin, Alamat, Spesialisasi, User_Type, Gaji)
+VALUES
+('DKT002', 'rio', NULL, NULL, '23123123', 'Perempuan', 'asdad12', 'Dokter Umum', 'dokter', 3000000),
+('DKT002', 'riozy', NULL, NULL, '23123123', 'Laki-Laki', 'asdad12', 'Dokter gigi', 'dokter', 3000000),
+('ADM001', 'admin', 'admin', 'adminpass1', '9876543210', 'Perempuan', 'Jl. Perawat No. 1', NULL, 'admin', 150000000), 
+('KSR001', 'kasir', 'kasir', 'ada1312', '9876543210', 'Laki-Laki', 'Jl. Perawat No. 1', NULL, 'kasir', 150000000), 
+('PWT001', 'Perawat Pertama', 'perawat1', 'asd321', '9876543210', 'Laki-Laki', 'Jl. Perawat No. 1', NULL, 'perawat', 150000000);
+
+
+USE [klinik]
+GO
+
+/****** Object:  Table [dbo].[tabel_obat_pasien]    Script Date: 18/06/2023 06:57:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[tabel_obat_pasien](
+	[ID] [nvarchar](255) NULL,
+	[Nama_Obat] [nvarchar](255) NULL,
+	[Tipe] [nvarchar](255) NULL,
+	[Harga] [int] NULL,
+	[Id_Kasir_History] [nvarchar](50) NULL,
+	[Nama_Kasir_History] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+INSERT INTO tabel_obat_pasien (ID, Nama_Obat, Tipe, Harga, Id_Kasir_History, Nama_Kasir_History)
+VALUES
+(2, 'Administrasi', 'Administrasi', 35000, NULL, NULL),
+(3, 'Paracetamol', 'Obat', 20000, NULL, NULL),
+(5, 'Ibuprofen', 'Obat', 60000, 'KSR004', NULL);
+
+
+USE [klinik]
+GO
+
+/****** Object:  Table [dbo].[transaksi_pasien]    Script Date: 18/06/2023 06:59:12 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[transaksi_pasien](
+	[Tanggal] [datetime] NULL,
+	[ID_Pasien] [nvarchar](255) NULL,
+	[Nama_Pasien] [varchar](255) NULL,
+	[Diagnosa] [varchar](255) NULL,
+	[Resep] [varchar](255) NULL,
+	[Qty] [int] NULL,
+	[Alamat] [varchar](255) NULL,
+	[Harga] [int] NULL,
+	[Total_Harga] [int] NULL,
+	[Id_Kasir_History] [nvarchar](50) NULL,
+	[Nama_Kasir_History] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+INSERT INTO transaksi_pasien (Tanggal, ID_Pasien, Nama_Pasien, Diagnosa, Resep, Qty, Alamat, Harga, Total_Harga, Id_Kasir_History, Nama_Kasir_History)
+VALUES
+('2023-06-17 22:46:55.217', 'PSN002', 'Nama Pasien 2', 'Diagnosa 2', 'Administrasi', 1, 'Alamat 2', 35000, 175000, 'KSR004', NULL),
+('2023-06-17 22:46:55.230', 'PSN002', 'Nama Pasien 2', 'Diagnosa 2', 'Paracetamol', 1, 'Alamat 2', 20000, 175000, 'KSR004', NULL),
+('2023-06-17 22:46:55.230', 'PSN002', 'Nama Pasien 2', 'Diagnosa 2', 'Ibuprofen', 2, 'Alamat 2', 120000, 175000, 'KSR004', NULL);
+
+
+
+USE [klinik]
+GO
+
+/****** Object:  Table [dbo].[pemeriksaan]    Script Date: 18/06/2023 07:01:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[pemeriksaan](
+	[ID] [nvarchar](50) NULL,
+	[No_Antrean] [nvarchar](50) NULL,
+	[Nama_Pasien] [varchar](100) NULL,
+	[Diagnosa] [varchar](100) NULL,
+	[Resep] [varchar](100) NULL,
+	[Jenis_Kelamin] [varchar](10) NULL,
+	[Tanggal_Pemeriksaan] [date] NULL,
+	[Nomor_Telepon] [nvarchar](20) NULL,
+	[Keterangan] [varchar](100) NULL,
+	[Alamat] [varchar](200) NULL,
+	[Dokter] [varchar](100) NULL,
+	[Spesialisasi] [varchar](100) NULL,
+	[Id_Perawat_History] [nvarchar](50) NULL,
+	[Nama_Perawat_History] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+INSERT INTO pemeriksaan (ID, No_Antrean, Nama_Pasien, Diagnosa, Resep, Jenis_Kelamin, Tanggal_Pemeriksaan, Nomor_Telepon, Keterangan, Alamat, Dokter, Spesialisasi, Id_Perawat_History, Nama_Perawat_History)
+VALUES
+('PSN005', 'Antrean3', 'Nama Pasien 2', 'Diagnosa 2', 'Paracetamol = 1, Ibuprofen = 2', 'Laki-laki', '2023-06-17', 'Nomor Telepon 2', 'Keterangan 2', 'Alamat 2', 'rio', 'Dokter Umum', 'PWT002', NULL);
+
